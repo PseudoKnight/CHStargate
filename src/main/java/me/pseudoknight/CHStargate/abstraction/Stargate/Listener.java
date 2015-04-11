@@ -15,7 +15,7 @@ public class Listener implements org.bukkit.event.Listener {
 		if(sgl == null) {
 			sgl = new Listener();
 		}
-		CommandHelperPlugin.self.registerEvent(sgl);
+		CommandHelperPlugin.self.registerEvents(sgl);
 	}
 
 	public static void unregister() {

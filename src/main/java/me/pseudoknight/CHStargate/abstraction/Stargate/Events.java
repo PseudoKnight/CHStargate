@@ -2,7 +2,7 @@ package me.pseudoknight.CHStargate.abstraction.Stargate;
 
 import com.laytonsmith.abstraction.Implementation;
 import com.laytonsmith.abstraction.MCPlayer;
-import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
+import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 import com.laytonsmith.annotations.abstraction;
 import me.pseudoknight.CHStargate.abstraction.CHStargateAccessEvent;
 import me.pseudoknight.CHStargate.abstraction.CHStargateDestroyEvent;
