@@ -5,6 +5,6 @@ import net.TheDgtl.Stargate.Portal;
 
 public interface CHStargateEvent extends BindableEvent {
 
-    public abstract Portal getPortal();
+	Portal getPortal();
 
 }

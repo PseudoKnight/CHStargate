@@ -4,12 +4,12 @@ import com.laytonsmith.abstraction.MCPlayer;
 
 public interface CHStargateDestroyEvent extends CHStargateEvent {
 
-    public abstract MCPlayer getPlayer();
-    public abstract boolean getDeny();
-    public abstract void setDeny(boolean deny);
-    public abstract String getDenyReason();
-    public abstract void setDenyReason(String denyReason);
-    public abstract int getCost();
-    public abstract void setCost(int cost);
+	MCPlayer getPlayer();
+	boolean getDeny();
+	void setDeny(boolean deny);
+	String getDenyReason();
+	void setDenyReason(String denyReason);
+	int getCost();
+	void setCost(int cost);
 
 }
