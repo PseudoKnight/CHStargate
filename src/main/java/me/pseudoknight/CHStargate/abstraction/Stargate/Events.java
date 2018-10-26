@@ -13,6 +13,7 @@ import net.TheDgtl.Stargate.event.StargateAccessEvent;
 import net.TheDgtl.Stargate.event.StargateDestroyEvent;
 import net.TheDgtl.Stargate.event.StargateEvent;
 import net.TheDgtl.Stargate.event.StargateOpenEvent;
+import org.bukkit.entity.Player;
 
 public class Events {
 
@@ -138,6 +139,10 @@ public class Events {
 
 		@Override
 		public MCPlayer getPlayer() {
+			Player p = e.getPlayer();
+			if(p == null) {
+				return null;
+			}
 			return new BukkitMCPlayer(e.getPlayer());
 		}
 

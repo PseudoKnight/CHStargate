@@ -1,8 +1,10 @@
 package me.pseudoknight.CHStargate;
 
+import com.laytonsmith.abstraction.MCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.constructs.CArray;
+import com.laytonsmith.core.constructs.CNull;
 import com.laytonsmith.core.constructs.CString;
 import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
@@ -133,7 +135,7 @@ public class CHEvents {
 		public String docs() {
 			return "{} "
 					+ "Fired when a Stargate portal is opened."
-					+ " {player: The player opening the portal. | portal: The Stargate portal's name."
+					+ " {player: The player opening the portal, if one. | portal: The Stargate portal's name."
 					+ " | network: The Stargate network this portal belongs to."
 					+ " | owner: The name of the player that owns this portal. }"
 					+ "{} "
@@ -150,7 +152,10 @@ public class CHEvents {
 		public Map<String, Construct> evaluate(BindableEvent event) throws EventException {
 			CHStargateOpenEvent e = (CHStargateOpenEvent) event;
 			Map<String, Construct> map = new HashMap<>();
-			map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
+			MCPlayer p = e.getPlayer();
+			if(p != null) {
+				map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
+			}
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
 			map.put("owner", new CString(e.getPortal().getOwner(), Target.UNKNOWN));
