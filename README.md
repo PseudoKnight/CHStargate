@@ -4,8 +4,8 @@ Adds functions and events for the Stargate plugin. This should only be used if y
 
 ### Functions
 
-* boolean **sg_set_owner(portalName, portalNetwork, owner}** Sets the portal's owner name.
-* string **sg_get_owner(portalName, portalNetwork} Returns the portal's owner name.
+* boolean **sg_set_owner(portalName, portalNetwork, owner)** Sets the portal's owner name.
+* string **sg_get_owner(portalName, portalNetwork)** Returns the portal's owner name.
 
 ### Events
 #### stargate_access
