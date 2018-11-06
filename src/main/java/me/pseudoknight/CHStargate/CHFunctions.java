@@ -46,7 +46,7 @@ public class CHFunctions {
 	public static class sg_get_owner extends StargateFunction {
 		@Override
 		public String docs() {
-			return "string {portalName, portalNetwork} Returns the portal's owner.";
+			return "string {portalName, portalNetwork} Returns the portal's owner name.";
 		}
 
 		@Override
@@ -77,7 +77,7 @@ public class CHFunctions {
 	public static class sg_set_owner extends StargateFunction {
 		@Override
 		public String docs() {
-			return "boolean {portalName, portalNetwork, owner} Sets the portal's owner.";
+			return "boolean {portalName, portalNetwork, owner} Sets the portal's owner name.";
 		}
 
 		@Override
