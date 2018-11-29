@@ -2,11 +2,9 @@ package me.pseudoknight.CHStargate;
 
 import com.laytonsmith.abstraction.MCPlayer;
 import com.laytonsmith.annotations.api;
-import com.laytonsmith.core.CHVersion;
+import com.laytonsmith.core.MSVersion;
 import com.laytonsmith.core.constructs.CArray;
-import com.laytonsmith.core.constructs.CNull;
 import com.laytonsmith.core.constructs.CString;
-import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.events.AbstractEvent;
 import com.laytonsmith.core.events.BindableEvent;
@@ -14,6 +12,7 @@ import com.laytonsmith.core.events.Driver;
 import com.laytonsmith.core.events.Prefilters;
 import com.laytonsmith.core.exceptions.EventException;
 import com.laytonsmith.core.exceptions.PrefilterNonMatchException;
+import com.laytonsmith.core.natives.interfaces.Mixed;
 import me.pseudoknight.CHStargate.abstraction.CHStargateAccessEvent;
 import me.pseudoknight.CHStargate.abstraction.CHStargateDestroyEvent;
 import me.pseudoknight.CHStargate.abstraction.CHStargateOpenEvent;
@@ -35,8 +34,8 @@ public class CHEvents {
 		}
 
 		@Override
-		public CHVersion since() {
-			return CHVersion.V3_3_1;
+		public MSVersion since() {
+			return MSVersion.V3_3_1;
 		}
 
 		@Override
@@ -59,16 +58,15 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean matches(Map<String, Construct> prefilter, BindableEvent e)
-				throws PrefilterNonMatchException {
+		public boolean matches(Map<String, Mixed> prefilter, BindableEvent e) throws PrefilterNonMatchException {
 			Prefilters.match(prefilter, "deny", ((CHStargateDestroyEvent) e).getDeny(), Prefilters.PrefilterType.BOOLEAN_MATCH);
 			return true;
 		}
 
 		@Override
-		public Map<String, Construct> evaluate(BindableEvent event) throws EventException {
+		public Map<String, Mixed> evaluate(BindableEvent event) throws EventException {
 			CHStargateDestroyEvent e = (CHStargateDestroyEvent) event;
-			Map<String, Construct> map = new HashMap<>();
+			Map<String, Mixed> map = new HashMap<>();
 			map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
@@ -77,7 +75,7 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean modifyEvent(String key, Construct value, BindableEvent event) {
+		public boolean modifyEvent(String key, Mixed value, BindableEvent event) {
 			return false;
 		}
 
@@ -101,16 +99,15 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean matches(Map<String, Construct> prefilter, BindableEvent e)
-				throws PrefilterNonMatchException {
+		public boolean matches(Map<String, Mixed> prefilter, BindableEvent e) throws PrefilterNonMatchException {
 			Prefilters.match(prefilter, "deny", ((CHStargateAccessEvent) e).getDeny(), Prefilters.PrefilterType.BOOLEAN_MATCH);
 			return true;
 		}
 
 		@Override
-		public Map<String, Construct> evaluate(BindableEvent event) throws EventException {
+		public Map<String, Mixed> evaluate(BindableEvent event) throws EventException {
 			CHStargateAccessEvent e = (CHStargateAccessEvent) event;
-			Map<String, Construct> map = new HashMap<>();
+			Map<String, Mixed> map = new HashMap<>();
 			map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
@@ -119,7 +116,7 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean modifyEvent(String key, Construct value, BindableEvent event) {
+		public boolean modifyEvent(String key, Mixed value, BindableEvent event) {
 			return false;
 		}
 
@@ -143,15 +140,14 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean matches(Map<String, Construct> prefilter, BindableEvent event)
-				throws PrefilterNonMatchException {
+		public boolean matches(Map<String, Mixed> prefilter, BindableEvent event) throws PrefilterNonMatchException {
 			return true;
 		}
 
 		@Override
-		public Map<String, Construct> evaluate(BindableEvent event) throws EventException {
+		public Map<String, Mixed> evaluate(BindableEvent event) throws EventException {
 			CHStargateOpenEvent e = (CHStargateOpenEvent) event;
-			Map<String, Construct> map = new HashMap<>();
+			Map<String, Mixed> map = new HashMap<>();
 			MCPlayer p = e.getPlayer();
 			if(p != null) {
 				map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
@@ -163,13 +159,13 @@ public class CHEvents {
 		}
 
 		@Override
-		public boolean modifyEvent(String key, Construct value, BindableEvent event) {
+		public boolean modifyEvent(String key, Mixed value, BindableEvent event) {
 			return false;
 		}
 
 		@Override
-		public CHVersion since() {
-			return CHVersion.V3_3_2;
+		public MSVersion since() {
+			return MSVersion.V3_3_2;
 		}
 	}
 

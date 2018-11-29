@@ -1,6 +1,6 @@
 # CHStargate
 
-Adds functions and events for the Stargate plugin. This should only be used if you are already using the Stargate plugin.
+Adds functions and events for the Stargate plugin. This should only be used if you are already using the [Stargate](https://github.com/PseudoKnight/Stargate-Bukkit) plugin.
 
 ### Functions
 
