@@ -23,7 +23,7 @@ import java.util.Map;
 public class CHEvents {
 
 	protected static abstract class StargateEvent extends AbstractEvent {
-		@Override
+		@Override 
 		public String getName() {
 			return getClass().getSimpleName();
 		}
@@ -51,8 +51,7 @@ public class CHEvents {
 			return "{deny: <boolean> Whether access was denied or not. }"
 					+ " Fired when a block of a Stargate portal is broken."
 					+ " {player: The player that broke the block. | portal: The Stargate portal's name."
-					+ " | network: The Stargate network this portal belongs to."
-					+ " | owner: The name of the player that owns this portal. }"
+					+ " | network: The Stargate network this portal belongs to.}"
 					+ "{} "
 					+ " {}";
 		}
@@ -70,7 +69,6 @@ public class CHEvents {
 			map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
-			map.put("owner", new CString(e.getPortal().getOwner(), Target.UNKNOWN));
 			return map;
 		}
 
@@ -92,8 +90,7 @@ public class CHEvents {
 			return "{<boolean> deny: Whether access was denied or not. } "
 					+ "Fired when a player interacts with a Stargate. Result determines access."
 					+ " {player: The player requesting access. | portal: The Stargate portal's name."
-					+ " | network: The Stargate network this portal belongs to."
-					+ " | owner: The name of the player that owns this portal. }"
+					+ " | network: The Stargate network this portal belongs to.}"
 					+ "{} "
 					+ "{} ";
 		}
@@ -111,7 +108,6 @@ public class CHEvents {
 			map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
-			map.put("owner", new CString(e.getPortal().getOwner(), Target.UNKNOWN));
 			return map;
 		}
 
@@ -133,8 +129,7 @@ public class CHEvents {
 			return "{} "
 					+ "Fired when a Stargate portal is opened."
 					+ " {player: The player opening the portal, if one. | portal: The Stargate portal's name."
-					+ " | network: The Stargate network this portal belongs to."
-					+ " | owner: The name of the player that owns this portal. }"
+					+ " | network: The Stargate network this portal belongs to.}"
 					+ "{} "
 					+ "{} ";
 		}
@@ -154,7 +149,6 @@ public class CHEvents {
 			}
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
-			map.put("owner", new CString(e.getPortal().getOwner(), Target.UNKNOWN));
 			return map;
 		}
 
