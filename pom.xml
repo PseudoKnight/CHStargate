@@ -78,8 +78,8 @@
     </build>
     <repositories>
         <repository>
-            <id>sk89q-repo</id>
-            <url>http://maven.sk89q.com/repo</url>
+            <id>enginehub-repo</id>
+            <url>https://maven.enginehub.org/repo</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.TheDgtl</groupId>
             <artifactId>Stargate</artifactId>
-            <version>0.8.0.0</version>
+            <version>0.8.0.2</version>
         </dependency>
     </dependencies>
 </project>

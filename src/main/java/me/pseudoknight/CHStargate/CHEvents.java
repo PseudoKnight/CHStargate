@@ -23,11 +23,6 @@ import java.util.Map;
 public class CHEvents {
 
 	protected static abstract class StargateEvent extends AbstractEvent {
-		@Override 
-		public String getName() {
-			return getClass().getSimpleName();
-		}
-
 		@Override
 		public Driver driver() {
 			return Driver.EXTENSION;
@@ -46,6 +41,12 @@ public class CHEvents {
 
 	@api
 	public static class stargate_destroy extends StargateEvent {
+
+		@Override
+		public String getName() {
+			return "stargate_destroy";
+		}
+
 		@Override
 		public String docs() {
 			return "{deny: <boolean> Whether access was denied or not. }"
@@ -85,6 +86,12 @@ public class CHEvents {
 
 	@api
 	public static class stargate_access extends StargateEvent {
+
+		@Override
+		public String getName() {
+			return "stargate_access";
+		}
+
 		@Override
 		public String docs() {
 			return "{<boolean> deny: Whether access was denied or not. } "
@@ -124,6 +131,12 @@ public class CHEvents {
 
 	@api
 	public static class stargate_open extends StargateEvent {
+
+		@Override
+		public String getName() {
+			return "stargate_open";
+		}
+
 		@Override
 		public String docs() {
 			return "{} "
