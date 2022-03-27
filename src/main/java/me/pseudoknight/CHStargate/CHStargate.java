@@ -14,7 +14,7 @@ import java.util.logging.Level;
 public class CHStargate extends AbstractExtension {
 
 	public Version getVersion() {
-		return new SimpleVersion(3,0,0);
+		return new SimpleVersion(3,0,1);
 	}
 
 	@Override
