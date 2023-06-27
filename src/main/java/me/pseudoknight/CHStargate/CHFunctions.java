@@ -176,6 +176,38 @@ public class CHFunctions {
 	}
 
 	@api
+	public static class sg_is_portal_open extends StargateFunction {
+		@Override
+		public String getName() {
+			return "sg_is_portal_open";
+		}
+
+		@Override
+		public String docs() {
+			return "boolean {portalName, portalNetwork} Returns whether the given portal is currently open.";
+		}
+
+		@Override
+		public Integer[] numArgs() {
+			return new Integer[]{2};
+		}
+
+		@Override
+		public Mixed exec(Target t, Environment environment, Mixed... args) throws ConfigRuntimeException {
+			Portal portal = Portal.getByName(args[0].val(), args[1].val());
+			if (portal == null) {
+				throw new CRENotFoundException("Portal was not found.", t);
+			}
+			return CBoolean.get(portal.isOpen());
+		}
+
+		@Override
+		public Version since() {
+			return MSVersion.V3_3_4;
+		}
+	}
+
+	@api
 	public static class sg_get_portal_info extends StargateFunction {
 		@Override
 		public String getName() {
