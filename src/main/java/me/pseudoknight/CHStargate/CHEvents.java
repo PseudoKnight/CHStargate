@@ -3,6 +3,7 @@ package me.pseudoknight.CHStargate;
 import com.laytonsmith.abstraction.MCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.MSVersion;
+import com.laytonsmith.core.ObjectGenerator;
 import com.laytonsmith.core.constructs.CArray;
 import com.laytonsmith.core.constructs.CString;
 import com.laytonsmith.core.constructs.Target;
@@ -16,6 +17,7 @@ import com.laytonsmith.core.natives.interfaces.Mixed;
 import me.pseudoknight.CHStargate.abstraction.CHStargateAccessEvent;
 import me.pseudoknight.CHStargate.abstraction.CHStargateDestroyEvent;
 import me.pseudoknight.CHStargate.abstraction.CHStargateOpenEvent;
+import me.pseudoknight.CHStargate.abstraction.CHStargatePortalEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -158,7 +160,7 @@ public class CHEvents {
 			Map<String, Mixed> map = new HashMap<>();
 			MCPlayer p = e.getPlayer();
 			if(p != null) {
-				map.put("player", new CString(e.getPlayer().getName(), Target.UNKNOWN));
+				map.put("player", new CString(p.getName(), Target.UNKNOWN));
 			}
 			map.put("portal", new CString(e.getPortal().getName(), Target.UNKNOWN));
 			map.put("network", new CString(e.getPortal().getNetwork(), Target.UNKNOWN));
@@ -173,6 +175,61 @@ public class CHEvents {
 		@Override
 		public MSVersion since() {
 			return MSVersion.V3_3_2;
+		}
+	}
+
+	@api
+	public static class stargate_portal extends StargateEvent {
+
+		@Override
+		public String getName() {
+			return "stargate_portal";
+		}
+
+		@Override
+		public String docs() {
+			return "{} "
+					+ "Fired when a Stargate portal is traversed."
+					+ " {player: The player traveling. | portal: The Stargate portal's name."
+					+ " | network: The Stargate network this portal belongs to."
+					+ " | exit: The exit location. | exitportal: The name of portal at the exit.}"
+					+ "{exit: A different exit location.} "
+					+ "{} ";
+		}
+
+		@Override
+		public boolean matches(Map<String, Mixed> prefilter, BindableEvent event) throws PrefilterNonMatchException {
+			return true;
+		}
+
+		@Override
+		public Map<String, Mixed> evaluate(BindableEvent event) throws EventException {
+			CHStargatePortalEvent e = (CHStargatePortalEvent) event;
+			Map<String, Mixed> map = new HashMap<>();
+			Target t = Target.UNKNOWN;
+			map.put("player", new CString(e.getPlayer().getName(), t));
+			map.put("portal", new CString(e.getPortal().getName(), t));
+			map.put("network", new CString(e.getPortal().getNetwork(), t));
+			map.put("exitportal", new CString(e.getDestination().getName(), t));
+			map.put("exit", ObjectGenerator.GetGenerator().location(e.getExit()));
+			return map;
+		}
+
+		@Override
+		public boolean modifyEvent(String key, Mixed value, BindableEvent event) {
+			if(event instanceof CHStargatePortalEvent) {
+				CHStargatePortalEvent e = (CHStargatePortalEvent) event;
+				if(key.equalsIgnoreCase("exit")) {
+					e.setExit(ObjectGenerator.GetGenerator().location(value, null, value.getTarget()));
+					return true;
+				}
+			}
+			return false;
+		}
+
+		@Override
+		public MSVersion since() {
+			return MSVersion.V3_3_4;
 		}
 	}
 

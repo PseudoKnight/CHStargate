@@ -29,3 +29,9 @@ Fired when a block of a Stargate portal is broken.
 Fired when a Stargate portal is opened.
 
 * data: player, portal, network
+
+#### stargate_portal
+
+Fired when a Stargate portal is traversed.
+
+* data: player, portal, network, exit, exitportal

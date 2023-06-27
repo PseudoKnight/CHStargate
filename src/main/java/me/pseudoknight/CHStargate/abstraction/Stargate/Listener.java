@@ -39,4 +39,8 @@ public class Listener implements org.bukkit.event.Listener {
 		EventUtils.TriggerListener(Driver.EXTENSION, "stargate_open", new Events.BukkitStargateOpenEvent(event));
 	}
 
+	@EventHandler(priority = EventPriority.LOWEST)
+	public void onStargateOpen(StargatePortalEvent event) {
+		EventUtils.TriggerListener(Driver.EXTENSION, "stargate_portal", new Events.BukkitStargatePortalEvent(event));
+	}
 }
