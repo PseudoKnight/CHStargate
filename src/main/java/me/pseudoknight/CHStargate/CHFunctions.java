@@ -217,7 +217,9 @@ public class CHFunctions {
 		@Override
 		public String docs() {
 			return "array {portalName, portalNetwork} Gets an array of data about a specific Stargate portal."
-					+ " Throws NotFoundException if a portal was not found by that name on the specified network.";
+					+ " Throws NotFoundException if a portal was not found by that name on the specified network."
+					+ " Array keys are: button, sign, destination, frame, entrance, options, open, ownerUUID, and ownerName."
+					+ " Options array keys are: alwaysOn, backwards, free, hidden, noNetwork, private, random, and show.";
 		}
 
 		@Override
@@ -233,7 +235,12 @@ public class CHFunctions {
 			}
 
 			CArray arr = CArray.GetAssociativeArray(t);
-			arr.set("button", ObjectGenerator.GetGenerator().location(new BukkitMCLocation(portal.getButton().getLocation()), false), t);
+			Blox button = portal.getButton();
+			if(button == null) {
+				arr.set("button", CNull.NULL, t);
+			} else {
+				arr.set("button", ObjectGenerator.GetGenerator().location(new BukkitMCLocation(button.getLocation()), false), t);
+			}
 			arr.set("sign", ObjectGenerator.GetGenerator().location(new BukkitMCLocation(portal.getSign().getLocation()), false), t);
 
 			Portal destination = portal.getDestination();
@@ -265,6 +272,8 @@ public class CHFunctions {
 			options.set("random", CBoolean.get(portal.isRandom()), t);
 			options.set("show", CBoolean.get(portal.isShown()), t);
 			arr.set("options", options, t);
+
+			arr.set("open", CBoolean.get(portal.isOpen()), t);
 
 			UUID ownerUUID = portal.getOwnerUUID();
 			if(ownerUUID == null) {

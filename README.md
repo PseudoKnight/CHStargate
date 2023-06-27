@@ -7,7 +7,10 @@ Adds functions and events for the Stargate plugin. This should only be used if y
 * boolean **sg_set_owner(portalName, portalNetwork, owner)** Sets the portal's owner.
 * string **sg_get_owner_name(portalName, portalNetwork)** Returns the portal's owner name.
 * string **sg_get_owner_uuid(portalName, portalNetwork)** Returns the portal's owner UUID.
-* array **sg_get_portal_info(portalName, portalNetwork)** Gets an array of data about a specific Stargate portal.
+* boolean **sg_is_portal_open(portalName, portalNetwork)** Returns whether the given portal is currently open.
+* array **sg_get_portal_info(portalName, portalNetwork)** Gets an array of data about a specific Stargate portal.  
+Array keys are: button, sign, destination, frame, entrance, options, open, ownerUUID, and ownerName.
+Options array keys are: alwaysOn, backwards, free, hidden, noNetwork, private, random, and show.
 
 ### Events
 #### stargate_access
