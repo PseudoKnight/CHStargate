@@ -11,7 +11,7 @@ import me.pseudoknight.CHStargate.abstraction.Stargate.Listener;
 public class CHStargate extends AbstractExtension {
 
 	public Version getVersion() {
-		return new SimpleVersion(3,1,0);
+		return new SimpleVersion(3,1,1);
 	}
 
 	@Override

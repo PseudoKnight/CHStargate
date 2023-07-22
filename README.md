@@ -2,6 +2,12 @@
 
 Adds functions and events for the Stargate plugin. This should only be used if you are already using the [Stargate](https://github.com/PseudoKnight/Stargate-Bukkit) plugin.
 
+## Compatibility and Downloads
+
+[CHStargate 3.1.1](https://letsbuild.net/jenkins/job/CHStargate/lastSuccessfulBuild/) for CommandHelper 3.3.5 and Stargate 0.8.0.x  
+[CHStargate 3.1.0](https://letsbuild.net/jenkins/job/CHStargate/38/) for CommandHelper 3.3.4 and Stargate 0.8.0.x  
+CHStargate 2.0.0 for CommandHelper 3.3.2 and Stargate 0.7.9.11  
+
 ## Functions
 
 boolean **sg_set_owner(portalName, portalNetwork, owner)**  
